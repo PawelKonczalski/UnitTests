@@ -1,9 +1,12 @@
 package calculator;
 
-public class Calculator {
-    private int currentValue = 0;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.security.InvalidParameterException;
 
-    public int getCurrentValue() {
+public class Calculator {
+    private double currentValue = 0;
+
+    public double getCurrentValue() {
         return currentValue;
     }
 
@@ -20,6 +23,17 @@ public class Calculator {
     }
 
     public void divide(int number) {
-        currentValue *= number;
+        if (number == 0) {
+          throw new InvalidParameterException("couldn't divide by zero");
+        }
+        currentValue /= number;
+    }
+
+    public void explode() {
+        throw new NotImplementedException();
+    }
+
+    public void reset() {
+        currentValue = 0;
     }
 }

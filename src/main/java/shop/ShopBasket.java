@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ShopBasket {
 
     private ArrayList<ShopItem> items = new ArrayList<>();
+    private ShopItemRepository shopItemRepository = new ShopItemRepository();
 
     public void addItem(ShopItem item, int count) {
         while (count > 0) {
@@ -50,5 +51,17 @@ public class ShopBasket {
             return "empty";
         }
         return "not empty?";
+    }
+
+    public boolean isExistitInDb(String uniqueIdentifier){
+        return shopItemRepository.load(uniqueIdentifier) != null;
+    }
+
+    public void store(){
+        shopItemRepository.store(items);
+    }
+
+    public void loadItemsFromDb(){
+        this.items = this.shopItemRepository.loadAll();
     }
 }

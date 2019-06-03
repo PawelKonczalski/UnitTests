@@ -1,4 +1,3 @@
 .idea
 tdd.iml
-.target\*
-.out
+

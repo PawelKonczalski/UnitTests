@@ -1,6 +1,7 @@
 package calculator;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.security.InvalidParameterException;
 
 public class Calculator {
@@ -19,12 +20,15 @@ public class Calculator {
     }
 
     public void multiply(int number) {
+        if (number == 0) {
+            throw new InvalidParameterException("couldn't multiply by zero");
+        }
         currentValue *= number;
     }
 
     public void divide(int number) {
         if (number == 0) {
-          throw new InvalidParameterException("couldn't divide by zero");
+            throw new InvalidParameterException("couldn't divide by zero");
         }
         currentValue /= number;
     }
